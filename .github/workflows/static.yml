@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bot Command Guide</title>
+
+    <style>
+        /* Reset Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #1a1a1a;
+            color: #d4af37; /* Light golden color */
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+            transition: background 0.5s;
+        }
+        h1 {
+            color: #fff5cc;
+            font-size: 2.8em;
+            margin-bottom: 20px;
+            text-align: center;
+            text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7);
+            animation: fadeInDown 1s ease-in-out;
+        }
+        .container {
+            max-width: 900px;
+            width: 100%;
+            background: #2e2b20;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.7);
+            animation: fadeInContainer 1.5s ease-in-out;
+        }
+        .category {
+            background-color: #3a2f25;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+        .category h2 {
+            font-size: 1.8em;
+            color: #f2d79e;
+            padding: 15px 20px;
+            cursor: pointer;
+            background-color: #4a3a2e;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: background 0.3s;
+        }
+        .category h2:hover {
+            color: #ffdd88;
+            background-color: #594532;
+        }
+        .dropdown-icon {
+            font-size: 1.2em;
+            transition: transform 0.3s;
+        }
+        .dropdown-content {
+            padding: 0 20px;
+            display: none;
+            animation: fadeIn 0.5s forwards;
+        }
+        .command {
+            padding: 15px;
+            background-color: #4a3a2e;
+            border-radius: 5px;
+            margin: 8px 0;
+            transition: transform 0.2s ease, background-color 0.2s ease;
+        }
+        .command:hover {
+            transform: scale(1.02);
+            background-color: #5b4634;
+        }
+        .command-name {
+            font-weight: bold;
+            color: #f1c27d;
+            font-size: 1.2em;
+            transition: color 0.3s;
+        }
+        .command-name:hover {
+            color: #ffd27f;
+        }
+        .description {
+            margin-top: 5px;
+            color: #f7e4c1;
+            font-size: 1em;
+            animation: fadeIn 0.3s;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            font-size: 0.85em;
+            color: #d3c09b;
+            animation: fadeInFooter 1s ease-in-out;
+        }
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeInContainer {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeInFooter {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Shield Command Guide</h1>
+
+        <!-- General Moderation Category -->
+        <div class="category">
+            <h2 onclick="toggleDropdown(this)">
+                General Moderation Commands
+                <span class="dropdown-icon">▼</span>
+            </h2>
+            <div class="dropdown-content">
+                <div class="command"><div class="command-name">ban &lt;user&gt; &lt;r&gt;</div><div class="description">Ban a user from the server.</div></div>
+                <div class="command"><div class="command-name">kick &lt;user&gt; &lt;r&gt;</div><div class="description">Kick a user from the server.</div></div>
+                <div class="command"><div class="command-name">warn &lt;user&gt; &lt;r&gt;</div><div class="description">Warn a user and optionally mute for severe reasons.</div></div>
+                <div class="command"><div class="command-name">unban &lt;id&gt;</div><div class="description">Unban a user using their ID or username#discriminator.</div></div>
+                <div class="command"><div class="command-name">mute &lt;user&gt; &lt;time&gt; &lt;r&gt;</div><div class="description">Mute a user for a specified time.</div></div>
+                <div class="command"><div class="command-name">unmuteall</div><div class="description">Unmute all muted users.</div></div>
+            </div>
+        </div>
+
+        <!-- Message Moderation Category -->
+        <div class="category">
+            <h2 onclick="toggleDropdown(this)">
+                Message Moderation Commands
+                <span class="dropdown-icon">▼</span>
+            </h2>
+            <div class="dropdown-content">
+                <div class="command"><div class="command-name">purge &lt;number&gt;</div><div class="description">Purge a specific number of messages.</div></div>
+                <div class="command"><div class="command-name">purgebot/pb</div><div class="description">Purge messages from bots.</div></div>
+                <div class="command"><div class="command-name">purgekeyword &lt;keyword&gt; &lt;num&gt;</div><div class="description">Purge messages containing a specific keyword.</div></div>
+                <div class="command"><div class="command-name">purgeuser &lt;user&gt; &lt;num&gt;</div><div class="description">Purge messages from a specific user.</div></div>
+                <div class="command"><div class="command-name">snipe</div><div class="description">Snipe the last deleted message.</div></div>
+                <div class="command"><div class="command-name">editsnipe &lt;num&gt;</div><div class="description">Snipe the last edited messages up to n numbers (Admin-only).</div></div>
+            </div>
+        </div>
+
+        <!-- User Moderation Category -->
+        <div class="category">
+            <h2 onclick="toggleDropdown(this)">
+                User Moderation Commands
+                <span class="dropdown-icon">▼</span>
+            </h2>
+            <div class="dropdown-content">
+                <div class="command"><div class="command-name">chatban &lt;user&gt;</div><div class="description">Ban a user from chat and delete every new message from them.</div></div>
+                <div class="command"><div class="command-name">chatunban &lt;user&gt;</div><div class="description">Unban a user from chat.</div></div>
+                <div class="command"><div class="command-name">reactban &lt;user&gt;</div><div class="description">Ban a user from reacting in channels.</div></div>
+                <div class="command"><div class="command-name">reactunban &lt;user&gt;</div><div class="description">Unban a user from reacting in channels.</div></div>
+            </div>
+        </div>
+
+        <!-- Server Moderation Category -->
+        <div class="category">
+            <h2 onclick="toggleDropdown(this)">
+                Server Moderation Commands
+                <span class="dropdown-icon">▼</span>
+            </h2>
+            <div class="dropdown-content">
+                <div class="command"><div class="command-name">lock &lt;chnl&gt;</div><div class="description">Lock a specific channel.</div></div>
+                <div class="command"><div class="command-name">unlock &lt;chnl&gt;</div><div class="description">Unlock a specific channel.</div></div>
+                <div class="command"><div class="command-name">hide &lt;chnl&gt;</div><div class="description">Hide a specific channel (Admin-only).</div></div>
+                <div class="command"><div class="command-name">unhide &lt;chnl&gt;</div><div class="description">Unhide a specific channel (Admin-only).</div></div>
+                <div class="command"><div class="command-name">nuke</div><div class="description">Reset a channel’s messages completely.</div></div>
+                <div class="command"><div class="command-name">config &lt;override&gt; &lt;user/role/everyone&gt; enable/disable</div><div class="description">Change override of a channel.</div></div>
+            </div>
+        </div>
+
+        <!-- Voice Channel (VC) Moderation Commands -->
+        <div class="category">
+            <h2 onclick="toggleDropdown(this)">
+                Voice Channel Moderation Commands
+                <span class="dropdown-icon">▼</span>
+            </h2>
+            <div class="dropdown-content">
+                <div class="command"><div class="command-name">vcban &lt;user&gt;</div><div class="description">Ban a user from joining voice channels.</div></div>
+                <div class="command"><div class="command-name">vcunban &lt;user&gt;</div><div class="description">Unban a user from joining voice channels.</div></div>
+                <div class="command"><div class="command-name">vcdeafenall</div><div class="description">Deafen all users in a specified voice channel.</div></div>
+                <div class="command"><div class="command-name">vckick &lt;user&gt;</div><div class="description">Kick a specific user from a voice channel.</div></div>
+                <div class="command"><div class="command-name">vckickall</div><div class="description">Kick all users from a specified voice channel.</div></div>
+                <div class="command"><div class="command-name">vcpull &lt;user&gt;</div><div class="description">Pull a user to your voice channel.</div></div>
+                <div class="command"><div class="command-name">vcpullall &lt;chnlid&gt;</div><div class="description">Move all users from a specified voice channel to your channel.</div></div>
+                <div class="command"><div class="command-name">vcmuteall</div><div class="description">Mute all users in a specified voice channel.</div></div>
+                <div class="command"><div class="command-name">vcunmuteall</div><div class="description">Unmute all users in a specified voice channel.</div></div>
+                <div class="command"><div class="command-name">vcmove &lt;user&gt; &lt;chnlid&gt;</div><div class="description">Move a user to a different voice channel.</div></div>
+                <div class="command"><div class="command-name">vcmoveall &lt;chnlid&gt;</div><div class="description">Move all users from your current voice channel to the target voice channel.</div></div>
+                <div class="command"><div class="command-name">vcmute &lt;user&gt;</div><div class="description">Mute a specific user in a voice channel.</div></div>
+                <div class="command"><div class="command-name">vcundeafenall</div><div class="description">Undeafen all users in a specified voice channel.</div></div>
+            </div>
+        </div>
+
+        <!-- Premium Commands Category -->
+        <div class="category">
+            <h2 onclick="toggleDropdown(this)">
+                Premium Commands
+                <span class="dropdown-icon">▼</span>
+            </h2>
+            <div class="dropdown-content">
+                <div class="command"><div class="command-name">synccategory &lt;categoryid&gt;</div><div class="description">Sync permissions across all channels in a category.</div></div>
+                <div class="command"><div class="command-name">targetlock &lt;user&gt;</div><div class="description">Locks a specific user’s access.</div></div>
+                <div class="command"><div class="command-name">release &lt;user&gt;</div><div class="description">Unlocks all channels for a specific user (Admin-only).</div></div>
+            </div>
+        </div>
+
+        <div class="footer">© 2024 Shield - Command Guide <br> Made by Silver </div>
+    </div>
+
+    <script>
+        function toggleDropdown(header) {
+            const dropdownContent = header.nextElementSibling;
+            const icon = header.querySelector('.dropdown-icon');
+            dropdownContent.style.display = dropdownContent.style.display === 'block' ? 'none' : 'block';
+            icon.style.transform = dropdownContent.style.display === 'block' ? 'rotate(180deg)' : 'rotate(0deg)';
+        }
+    </script>
+</body>
+</html>
+eployment, skipping runs queued between the run in-progress and latest queued.
+# However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  # Single deploy job since we're just deploying
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          # Upload entire repository
+          path: '.'
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
